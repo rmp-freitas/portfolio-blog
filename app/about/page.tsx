@@ -67,7 +67,7 @@ export default function AboutPage() {
           </p>
           <p className="font-mono text-sm leading-loose" style={{ color: "var(--color-ink)" }}>
             Bridging the gap between backend systems and intuitive user interfaces.
-            I'm a developer dedicated to clean code, performance, and UI that makes software feel premium.
+            I{"'"}m a developer dedicated to clean code, performance, and UI that makes software feel premium.
           </p>
         </div>
         <div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
       <section className="border-t border-wire pt-12 pb-4">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-display text-2xl md:text-3xl text-ink" style={{ fontWeight: 400 }}>
-            Let's work{" "}
+            Let{"'"}s work{" "}
             <em style={{ fontStyle: "italic", color: "var(--color-accent)" }}>together?</em>
           </p>
           <CopyEmailButton />
