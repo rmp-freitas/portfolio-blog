@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-const siteUrl = "https://example.com";
+const siteUrl = "https://rodri.dev";
 const siteName = "Rodri Dev Portfolio";
-const title = "Portfólio Pessoal e Blog Técnico";
-const description = "Portfólio com projetos, experiências e artigos técnicos sobre desenvolvimento web.";
+const title = "Personal site and blog";
+const description = "Personal site and blog with focus on performance, SEO and technical posts in MDX.";
 
 export const siteConfig = {
   title,
@@ -25,7 +25,7 @@ export const baseMetadata: Metadata = {
     url: siteUrl,
     siteName,
     type: "website",
-    locale: "pt_PT"
+    locale: "en"
   },
   twitter: {
     card: "summary_large_image",

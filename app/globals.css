@@ -1,11 +1,117 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ── THEME TOKENS ───────────────────────────────────────────── */
 
 :root {
-  color-scheme: light dark;
+  /* Light mode – warm paper */
+  --color-canvas:     #F7F2E8;
+  --color-surface:    #EDE5D4;
+  --color-wire:       #CFC5AF;
+  --color-ink:        #0C0C18;
+  --color-dim:        #7A6E5E;
+  --color-accent:     #D93800;
 }
 
+.dark {
+  /* Dark mode – primary aesthetic */
+  --color-canvas:     #06060A;
+  --color-surface:    #0F0F1C;
+  --color-wire:       #1E1E30;
+  --color-ink:        #EDE8DA;
+  --color-dim:        #555568;
+  --color-accent:     #FF4518;
+}
+
+/* ── BASE ───────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  @apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-50;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-mono), "DM Mono", "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── NOISE GRAIN OVERLAY ────────────────────────────────────── */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* ── SELECTION ─────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--color-accent);
+  color: #06060A;
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), "Fraunces", Georgia, serif;
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── ANIMATION DELAYS ───────────────────────────────────────── */
+
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-500 { animation-delay: 0.50s; }
+.delay-600 { animation-delay: 0.60s; }
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+
+::-webkit-scrollbar              { width: 5px; }
+::-webkit-scrollbar-track        { background: var(--color-canvas); }
+::-webkit-scrollbar-thumb        { background: var(--color-wire); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--color-dim); }
+
+/* ── HERO GLOW ──────────────────────────────────────────────── */
+
+.hero-glow {
+  background:
+    radial-gradient(ellipse 70% 55% at 75% -5%,  rgba(255, 69, 24, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(80, 60, 200, 0.05) 0%, transparent 70%);
+}
+
+/* ── PROSE (blog posts) ─────────────────────────────────────── */
+
+.prose {
+  --tw-prose-body:        var(--color-ink);
+  --tw-prose-headings:    var(--color-ink);
+  --tw-prose-links:       var(--color-accent);
+  --tw-prose-bold:        var(--color-ink);
+  --tw-prose-counters:    var(--color-dim);
+  --tw-prose-bullets:     var(--color-dim);
+  --tw-prose-hr:          var(--color-wire);
+  --tw-prose-quotes:      var(--color-ink);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions:    var(--color-dim);
+  --tw-prose-code:        var(--color-accent);
+  --tw-prose-pre-code:    var(--color-ink);
+  --tw-prose-pre-bg:      var(--color-surface);
+  --tw-prose-th-borders:  var(--color-wire);
+  --tw-prose-td-borders:  var(--color-wire);
 }

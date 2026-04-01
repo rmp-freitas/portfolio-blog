@@ -4,50 +4,165 @@ import { Project } from "@/lib/types";
 
 const featuredProjects: Project[] = [
   {
-    title: "Projeto 1.1 - Portfólio e Blog",
-    description: "Site pessoal com foco em performance, SEO e publicações técnicas em MDX.",
+    title: "Portfolio and blog",
+    description: "Personal site and blog with focus on performance, SEO and technical posts in MDX.",
     href: "/blog",
     tags: ["Next.js", "Tailwind", "MDX"],
-  },
-  {
-    title: "Dashboard Analytics",
-    description: "Painel responsivo para métricas de produtos SaaS com visualização clara de dados.",
-    href: "#",
-    tags: ["TypeScript", "Charts", "UX"],
   },
 ];
 
 export default function HomePage() {
   return (
-    <section className="space-y-12">
-      <div className="max-w-3xl space-y-5">
-        <p className="inline-block rounded-full bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-600 dark:text-brand-500">
-          Bem-vindo ao meu espaço digital
-        </p>
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Construo experiências web modernas e partilho conhecimento técnico.
-        </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-300">
-          Este é o meu portfólio pessoal e blog técnico: projetos reais, lições práticas e estudos sobre desenvolvimento full stack.
-        </p>
-        <Link href="/about" className="inline-block rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-500">
-          Conhecer meu perfil
-        </Link>
-      </div>
+    <div className="space-y-24">
 
-      <div>
-        <div className="mb-5 flex items-end justify-between">
-          <h2 className="text-2xl font-bold">Projetos em destaque</h2>
-          <Link href="/blog" className="text-sm text-brand-600 hover:underline dark:text-brand-500">
-            Ver artigos
+      {/* ── HERO ────────────────────────────────────────────────── */}
+      <section className="hero-glow relative overflow-hidden pt-8 pb-4 md:pt-16">
+
+        {/* Faded large section marker */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-0 select-none font-display font-bold leading-none"
+          style={{
+            fontSize: "clamp(120px, 22vw, 240px)",
+            color: "var(--color-ink)",
+            opacity: 0.035,
+            lineHeight: 0.85,
+          }}
+        >
+          01
+        </span>
+
+        <div className="relative max-w-4xl space-y-8">
+
+          {/* Badge */}
+          <p
+            className="animate-fade-up font-mono text-xs tracking-widest uppercase"
+            style={{ color: "var(--color-dim)", letterSpacing: "0.18em" }}
+          >
+            — Full-stack developer
+          </p>
+
+          {/* Headline */}
+          <h1
+            className="animate-fade-up delay-100 font-display text-[clamp(2.8rem,7vw,5.5rem)] text-ink"
+            style={{ fontWeight: 400 }}
+          >
+            I build{" "}
+            <em style={{ fontStyle: "italic", color: "var(--color-accent)" }}>
+              stuff
+            </em>{" "}
+            <span
+              className="animate-blink delay-300 inline-block"
+              style={{ color: "var(--color-accent)", marginLeft: "2px" }}
+            >
+              _
+            </span>
+          </h1>
+
+          {/* Sub-description */}
+          <p
+            className="animate-fade-up delay-200 max-w-xl font-mono text-sm leading-relaxed"
+            style={{ color: "var(--color-dim)" }}
+          >
+            A full-stack developer's log:
+             real projects, architectural deep dives, and everything I learn while breaking (and fixing) code.
+          </p>
+
+          {/* CTAs */}
+          <div className="animate-fade-up delay-300 flex flex-wrap items-center gap-4">
+            <Link
+              href="/about"
+              className="font-mono text-sm px-5 py-2.5 transition-opacity hover:opacity-80"
+              style={{
+                backgroundColor: "var(--color-accent)",
+                color: "#06060A",
+                fontWeight: 500,
+              }}
+            >
+              About me →
+            </Link>
+            <Link
+              href="/blog"
+              className="font-mono text-sm px-5 py-2.5 border border-wire text-dim hover:text-ink hover:border-ink transition-colors"
+            >
+              Blog →
+            </Link>
+          </div>
+
+          {/* Stack pills */}
+          <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+            {["Next.js", "TypeScript", "React", "Performance", "UX", "Design Systems"].map((skill) => (
+              <span
+                key={skill}
+                className="font-mono text-xs"
+                style={{ color: "var(--color-dim)" }}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── PROJECTS ────────────────────────────────────────────── */}
+      <section className="relative">
+
+        {/* Section marker */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-0 select-none font-display font-bold leading-none"
+          style={{
+            fontSize: "clamp(80px, 14vw, 160px)",
+            color: "var(--color-ink)",
+            opacity: 0.03,
+            lineHeight: 0.85,
+          }}
+        >
+          02
+        </span>
+
+        {/* Header row */}
+        <div className="mb-2 flex items-end justify-between">
+          <div>
+            <p
+              className="font-mono text-xs tracking-widest uppercase mb-2"
+              style={{ color: "var(--color-dim)", letterSpacing: "0.18em" }}
+            >
+              — Recent work
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl text-ink" style={{ fontWeight: 400 }}>
+              Featured projects
+            </h2>
+          </div>
+          <Link
+            href="/blog"
+            className="font-mono text-xs hidden sm:block transition-colors text-dim hover:text-accent"
+          >
+            Blog →
           </Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+
+        {/* Project list */}
+        <div className="mt-8 border-t border-wire">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
-      </div>
-    </section>
+
+        {/* Mobile articles link */}
+        <div className="mt-6 sm:hidden">
+          <Link
+            href="/blog"
+            className="font-mono text-xs"
+            style={{ color: "var(--color-dim)" }}
+          >
+            Blog →
+          </Link>
+        </div>
+
+      </section>
+
+    </div>
   );
 }
