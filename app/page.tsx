@@ -64,7 +64,7 @@ export default function HomePage() {
             className="animate-fade-up delay-200 max-w-xl font-mono text-sm leading-relaxed"
             style={{ color: "var(--color-dim)" }}
           >
-            A full-stack developer's log:
+            A full-stack developer{"'"}s log:
              real projects, architectural deep dives, and everything I learn while breaking (and fixing) code.
           </p>
 
